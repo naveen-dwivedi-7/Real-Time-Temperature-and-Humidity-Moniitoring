@@ -5,6 +5,8 @@ import socket
 plt.ion()  # Enable interactive mode
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
 fig.suptitle('IoT Temperature and Humidity Monitor')
+
+# Corrected axis titles
 ax1.set_title('Temperature')
 ax1.set_xlabel('Iteration')
 ax1.set_ylabel('Temp ($^0 C$)')
@@ -16,15 +18,15 @@ ax2.set_ylabel('Humidity ($\%$)')
 ax2.grid()
 
 def coverage_plot(data, i):
-    hum = float(data.split(",")[0])  # Extract and convert humidity
-    tem = float(data.split(",")[1])  # Extract and convert temperature
+    tem = float(data.split(",")[0])  # Extract and convert temperature
+    hum = float(data.split(",")[1])  # Extract and convert humidity
     print(f'temp={tem} iter={i}')
     
-    # Clear and update temperature plot
+    # Update temperature plot
     ax1.plot(i, tem, 'ro-', label='Temp' if i == 0 else "")
     ax1.legend()
     
-    # Clear and update humidity plot
+    # Update humidity plot
     ax2.plot(i, hum, 'bo-', label='Humidity' if i == 0 else "")
     ax2.legend()
 
